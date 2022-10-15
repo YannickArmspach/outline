@@ -3,6 +3,7 @@ import { SettingsIcon } from "outline-icons";
 import * as React from "react";
 import { Trans, useTranslation } from "react-i18next";
 import { languageOptions } from "@shared/i18n";
+import { UserPreference } from "@shared/types";
 import Button from "~/components/Button";
 import Heading from "~/components/Heading";
 import InputSelect from "~/components/InputSelect";
@@ -81,6 +82,20 @@ function Preferences() {
           value={user.language}
           onChange={handleLanguageChange}
           ariaLabel={t("Language")}
+        />
+      </SettingRow>
+      <SettingRow
+        name="useCursorPointer"
+        label={t("Use pointer cursor")}
+        description={t(
+          "Show a hand cursor when hovering over interactive elements."
+        )}
+      >
+        <Switch
+          id="useCursorPointer"
+          name="useCursorPointer"
+          checked={user.getPreference(UserPreference.UseCursorPointer, true)}
+          onChange={handlePreferenceChange}
         />
       </SettingRow>
       <SettingRow
